@@ -1,0 +1,100 @@
+
+<html>
+	<HEAD><TITLE>Data e Hora</TITLE>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link href="style.css" rel="stylesheet">
+        <header class="background-header">
+
+            <nav class="menu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">Serviços</a>
+						<ul>
+							<li><a href="forms.html">Hora e data</a></li>
+							<li><a href="#">Arte Visual</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Conteudo</a>
+						<ul>
+							<li><a href="#">HTML</a></li>
+							<li><a href="#">CSS</a></li>
+							<li><a href="#">XML</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Contato</a></li>
+				</ul>
+			</nav>
+              </header>
+		<script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+		<script type="text/javascript">
+			jQuery(window).load(function($){
+				atualizaRelogio();
+			});
+		</script>
+	</HEAD>
+	<body bgcolor= "rgb(0, 55, 83)">
+		 <style>
+        
+		p {
+                font-family: Calibri;
+            }
+            
+            #donut-header {
+                font-family: "Garamond", "Palatino", serif;
+            }
+            
+            .fact {
+                border-top: 1px solid rgb(222, 222, 222);
+                border-bottom: 1px solid rgb(222, 222, 222);
+                padding-top: 6px;
+                padding-bottom: 6px;
+            }
+
+        #relogio {
+            background: rgb(230, 230, 230);
+            width: 70%;
+            height: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        
+    </style>
+		<div >
+			<output id="data" style="font-family: 'arial green', 'avant garde'; font-size: 30px;"></output>
+		</div>
+		<div>
+			<output id="hora" style="font-family: 'arial green', 'avant garde'; font-size: 250px;"></output>				
+		</div>		
+	</BODY>
+<script>
+
+		function atualizaRelogio(){ 
+			var momentoAtual = new Date();
+			
+			var vhora = momentoAtual.getHours();
+			var vminuto = momentoAtual.getMinutes();
+			var vsegundo = momentoAtual.getSeconds();
+			
+			var vdia = momentoAtual.getDate();
+			var vmes = momentoAtual.getMonth() + 1;
+			var vano = momentoAtual.getFullYear();
+			
+			if (vdia < 10){ vdia = "0" + vdia;}
+			if (vmes < 10){ vmes = "0" + vmes;}
+			if (vhora < 10){ vhora = "0" + vhora;}
+			if (vminuto < 10){ vminuto = "0" + vminuto;}
+			if (vsegundo < 10){ vsegundo = "0" + vsegundo;}
+
+			dataFormat = vdia + " / " + vmes + " / " + vano;
+			horaFormat = vhora + " : " + vminuto + " : " + vsegundo;
+
+			document.getElementById("data").innerHTML = dataFormat;
+			document.getElementById("hora").innerHTML = horaFormat;
+
+			setTimeout("atualizaRelogio()",1000);
+		}
+	</script>	
+</HTML>
